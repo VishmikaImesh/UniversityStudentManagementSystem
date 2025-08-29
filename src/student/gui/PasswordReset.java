@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package gui;
+package student.gui;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -28,7 +28,7 @@ public class PasswordReset extends javax.swing.JFrame {
         emailPanel.putClientProperty(FlatClientProperties.STYLE, "arc:10");
         cancelBtn.putClientProperty(FlatClientProperties.STYLE, "arc:10");
         searchBtn.putClientProperty(FlatClientProperties.STYLE, "arc:10");
-        mailIcon.setIcon(new FlatSVGIcon("icon/mail.svg", 20, 20));
+        mailIcon.setIcon(new FlatSVGIcon("student/icon/mail.svg", 20, 20));
     }
 
     /**
