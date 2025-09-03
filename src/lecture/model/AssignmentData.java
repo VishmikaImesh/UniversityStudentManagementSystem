@@ -72,7 +72,6 @@ public class AssignmentData {
             Statement s = c.createStatement();
             ResultSet rs = s.executeQuery(bq);
             while (rs.next()) {
-                System.out.println(rs.getString("batch_name"));
                 batch.add(rs.getString("batch_name"));
             }
 
@@ -96,6 +95,30 @@ public class AssignmentData {
             ResultSet rs = s.executeQuery(sq);
             while (rs.next()) {
                 subject.add(rs.getString("subject_name"));
+            }
+
+            rs.close();
+            s.close();
+            c.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return subject;
+    }
+    
+    public List<String> loadAssignment(){
+        
+        String aq="SELECT * FROM `assigment`";
+        List<String> subject=new ArrayList<>();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
+            Statement s = c.createStatement();
+            ResultSet rs = s.executeQuery(aq);
+            while (rs.next()) {
+                subject.add(rs.getString("assignment_name"));
             }
 
             rs.close();

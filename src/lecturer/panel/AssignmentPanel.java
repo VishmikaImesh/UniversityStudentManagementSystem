@@ -49,6 +49,14 @@ public class AssignmentPanel extends javax.swing.JPanel {
             subjectModel.addElement(s);
         }
         subjectComboBox.setModel(subjectModel);
+        
+        DefaultComboBoxModel<String> AssignmentModel=new DefaultComboBoxModel<>();
+        List<String> assignments=data.loadAssignment();
+        for(String a:assignments){
+            AssignmentModel.addElement(a);
+        }
+        AgComboBox.setModel(AssignmentModel);
+        
     }
 
     private void setTable() {
@@ -181,7 +189,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         batchComboBox = new javax.swing.JComboBox<>();
         subjectComboBox = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        AgComboBox = new javax.swing.JComboBox<>();
         searchField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -252,8 +260,8 @@ public class AssignmentPanel extends javax.swing.JPanel {
         subjectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel4.add(subjectComboBox);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(jComboBox1);
+        AgComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(AgComboBox);
 
         searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,9 +329,9 @@ public class AssignmentPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> AgComboBox;
     private javax.swing.JComboBox<String> batchComboBox;
     private javax.swing.JPanel contents;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
