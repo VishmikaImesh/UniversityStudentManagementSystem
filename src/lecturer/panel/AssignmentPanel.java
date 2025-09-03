@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,12 +30,18 @@ public class AssignmentPanel extends javax.swing.JPanel {
         initComponents();
         setTable();
         init();
-
     }
     
     private void init(){
         searchbtn.putClientProperty(FlatClientProperties.STYLE, "arc:10");
         searchField.putClientProperty(FlatClientProperties.STYLE, "arc:10");
+        
+        DefaultComboBoxModel<String> model=new DefaultComboBoxModel<>();
+        List<String> batches=data.loadBatch();
+        for(String batch:batches){
+            model.addElement(batch);
+        }
+        batchComboBox.setModel(model);
     }
 
     private void setTable() {
@@ -112,7 +119,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
             btn.setName(a.getAssignmentID());
             btn.addActionListener((java.awt.event.ActionEvent evt) -> {
                 try {
-                    URL resource = Assignment.class.getResource("/student/assignment/001.pdf");
+                    URL resource = Assignment.class.getResource(a.getFilepath());
                     File pdfFile = new File(resource.toURI());
                     if (pdfFile.exists()) {
                         if (Desktop.isDesktopSupported()) {
@@ -165,7 +172,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        batchComboBox = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox1 = new javax.swing.JComboBox<>();
         searchField = new javax.swing.JTextField();
@@ -232,8 +239,8 @@ public class AssignmentPanel extends javax.swing.JPanel {
 
         jPanel4.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(jComboBox3);
+        batchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(batchComboBox);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel4.add(jComboBox2);
@@ -307,10 +314,10 @@ public class AssignmentPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> batchComboBox;
     private javax.swing.JPanel contents;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
