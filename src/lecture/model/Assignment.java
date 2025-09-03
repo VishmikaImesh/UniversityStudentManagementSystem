@@ -14,15 +14,17 @@ public class Assignment {
     private final String batch;
     private final String subject;
     private final String AssignmentID;
+    private final String filepath;
 
-    public Assignment(String nic, String name, String batch, String subject, String AssignmentID) {
+    public Assignment(String nic, String name, String batch, String subject, String AssignmentID, String filepath) {
         this.nic = nic;
         this.name = name;
         this.batch = batch;
         this.subject = subject;
         this.AssignmentID = AssignmentID;
+        this.filepath = filepath;
     }
-
+    
     public String getNic() {
         return nic;
     }
@@ -41,6 +43,10 @@ public class Assignment {
 
     public String getAssignmentID() {
         return AssignmentID;
+    }
+
+    public String getFilepath() {
+        return filepath;
     }
     
     

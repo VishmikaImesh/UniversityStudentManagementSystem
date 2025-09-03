@@ -100,6 +100,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
             JLabel batch = new JLabel();
             batch.setText(a.getBatch());
             row.add(batch);
+            
 
             JPanel btnpanel = new JPanel(new GridBagLayout());
             JButton btn = new JButton();
@@ -136,53 +137,6 @@ public class AssignmentPanel extends javax.swing.JPanel {
             row.add(marks);
 
             contents.add(row);
-
-            //l.setHorizontalAlignment(SwingConstants.CENTER);
-            //l.setBackground(Color.white);
-            //btnpanel.add(l);
-            //contents.add(btnpanel);
-//            if ((i + 1) % 6 == 0) {
-//                JPanel btnpanel = new JPanel(new GridBagLayout());
-//                JButton btn = new JButton();
-//                btn.setBackground(new java.awt.Color(0, 102, 255));
-//                btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-//                btn.setForeground(new java.awt.Color(255, 255, 255));
-//                btn.setText("View Assignment");
-//                btn.setName(Integer.toString(i));
-//                btn.addActionListener((java.awt.event.ActionEvent evt) -> {
-//                    try {
-//                        URL resource = Assignment.class.getResource("/student/assignment/001.pdf");
-//                        File pdfFile = new File(resource.toURI());
-//                        if (pdfFile.exists()) {
-//                            if (Desktop.isDesktopSupported()) {
-//                                Desktop.getDesktop().open(pdfFile);
-//                            } else {
-//                                System.out.println("Desktop not supported");
-//                            }
-//                        } else {
-//                            System.out.println("File does not exist");
-//                        }
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    } catch (URISyntaxException ex) {
-//                        Logger.getLogger(Assignment.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                });
-//
-//                btn.setSize(new Dimension(2, 2));
-//                btnpanel.add(btn);
-//                row.add(btnpanel);
-//                contents.add(btnpanel);
-//            } else {
-//                JPanel btnpanel = new JPanel(new GridBagLayout());
-//                JLabel l = new JLabel();
-//                l.setText("20030980032");
-//                l.setHorizontalAlignment(SwingConstants.CENTER);
-//                l.setBackground(Color.white);
-//                //l.setBorder(BorderFactory.createLineBorder(new Color(102,102,102)));
-//                btnpanel.add(l);
-//                contents.add(btnpanel);
-//            }
         }
 
         while (count < 9) {
