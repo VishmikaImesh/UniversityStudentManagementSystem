@@ -3,12 +3,14 @@ package lecturer.gui;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.CardLayout;
+import lecturer.panel.AssignmentPanel;
 import lecturer.panel.Dashboard;
 
 public class Home extends javax.swing.JFrame {
     
     private Dashboard dashboard;
     private CardLayout layout;
+    private AssignmentPanel assignment;
 
     public Home() {
         initComponents();
@@ -24,9 +26,11 @@ public class Home extends javax.swing.JFrame {
         
         layout =new CardLayout();
         dashboard =new Dashboard();
+        assignment=new AssignmentPanel();
         mainPanel.setLayout(layout);
         
         mainPanel.add(dashboard,"Dashboard");
+        mainPanel.add(assignment,"Assignment");
         layout.show(mainPanel,"Dashboard");
         
             
@@ -207,7 +211,7 @@ public class Home extends javax.swing.JFrame {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
+            .addGap(0, 933, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +225,8 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +259,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_dashboardbtnActionPerformed
 
     private void AssignmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignmentsBtnActionPerformed
-        // TODO add your handling code here:
+        layout.show(mainPanel,"Assignment");
     }//GEN-LAST:event_AssignmentsBtnActionPerformed
 
     private void PaymentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentsBtnActionPerformed

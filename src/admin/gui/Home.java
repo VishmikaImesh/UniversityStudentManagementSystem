@@ -4,14 +4,14 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import lecturer.panel.Assignment;
+import lecturer.panel.AssignmentPanel;
 import lecturer.panel.Dashboard;
 
 public class Home extends javax.swing.JFrame {
 
     private Dashboard dashboard;
     private CardLayout layout;
-    private Assignment assignment;
+    private AssignmentPanel assignment;
     
     public Home() {
         initComponents();
@@ -29,7 +29,7 @@ public class Home extends javax.swing.JFrame {
         mainPanel.setLayout(layout);
         
         dashboard = new Dashboard();
-        assignment=new Assignment();
+        assignment=new AssignmentPanel();
                 
         mainPanel.add(assignment,"Assignment");
         mainPanel.add(dashboard, "Dashboard");
@@ -298,7 +298,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_dashboardbtnActionPerformed
 
     private void AssignmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignmentsBtnActionPerformed
-        layout.show(assignment,"Assignment");
+        layout.show(mainPanel,"Assignment");
     }//GEN-LAST:event_AssignmentsBtnActionPerformed
 
     private void PaymentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentsBtnActionPerformed

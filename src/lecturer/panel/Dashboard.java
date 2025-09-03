@@ -17,7 +17,7 @@ public class Dashboard extends javax.swing.JPanel {
     }
 
     private void init() {
-        studentcard.putClientProperty(FlatClientProperties.STYLE, "arc:10");
+        studentcard.putClientProperty(FlatClientProperties.STYLE, "arc:0");
         //studentIcon.setIcon(new FlatSVGIcon("icon/Test.svg", 100, 100));             
     }
 
