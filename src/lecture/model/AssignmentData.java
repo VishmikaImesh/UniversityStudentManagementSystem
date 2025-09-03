@@ -85,4 +85,26 @@ public class AssignmentData {
         }
         return  batch;
     }
+    
+    public List<String> loadSubject(){
+        String sq="SELECT * FROM `subject`";
+        List<String> subject=new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
+            Statement s = c.createStatement();
+            ResultSet rs = s.executeQuery(sq);
+            while (rs.next()) {
+                subject.add(rs.getString("subject_name"));
+            }
+
+            rs.close();
+            s.close();
+            c.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return subject;
+    }
 }

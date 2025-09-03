@@ -36,12 +36,19 @@ public class AssignmentPanel extends javax.swing.JPanel {
         searchbtn.putClientProperty(FlatClientProperties.STYLE, "arc:10");
         searchField.putClientProperty(FlatClientProperties.STYLE, "arc:10");
         
-        DefaultComboBoxModel<String> model=new DefaultComboBoxModel<>();
+        DefaultComboBoxModel<String> batchmodel=new DefaultComboBoxModel<>();
         List<String> batches=data.loadBatch();
         for(String batch:batches){
-            model.addElement(batch);
+            batchmodel.addElement(batch);
         }
-        batchComboBox.setModel(model);
+        batchComboBox.setModel(batchmodel);
+        
+        DefaultComboBoxModel<String> subjectModel=new DefaultComboBoxModel<>();
+        List<String> subjects=data.loadSubject();
+        for(String s:subjects){
+            subjectModel.addElement(s);
+        }
+        subjectComboBox.setModel(subjectModel);
     }
 
     private void setTable() {
@@ -173,7 +180,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         batchComboBox = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        subjectComboBox = new javax.swing.JComboBox<>();
         jComboBox1 = new javax.swing.JComboBox<>();
         searchField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -242,8 +249,8 @@ public class AssignmentPanel extends javax.swing.JPanel {
         batchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel4.add(batchComboBox);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(jComboBox2);
+        subjectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(subjectComboBox);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel4.add(jComboBox1);
@@ -317,7 +324,6 @@ public class AssignmentPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> batchComboBox;
     private javax.swing.JPanel contents;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -333,5 +339,6 @@ public class AssignmentPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField searchField;
     private javax.swing.JButton searchbtn;
+    private javax.swing.JComboBox<String> subjectComboBox;
     // End of variables declaration//GEN-END:variables
 }
