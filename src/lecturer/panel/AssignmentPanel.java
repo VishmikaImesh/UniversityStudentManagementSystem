@@ -19,8 +19,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import lecture.model.AssignmentData;
 import lecture.model.Assignment;
+import lecture.model.AssignmentData;
+import lecture.model.StudentAssignment;
 
 public class AssignmentPanel extends javax.swing.JPanel {
 
@@ -51,9 +52,9 @@ public class AssignmentPanel extends javax.swing.JPanel {
         subjectComboBox.setModel(subjectModel);
         
         DefaultComboBoxModel<String> AssignmentModel=new DefaultComboBoxModel<>();
-        List<String> assignments=data.loadAssignment();
-        for(String a:assignments){
-            AssignmentModel.addElement(a);
+        List<Assignment> assignments=data.loadAssignment();
+        for(Assignment a:assignments){
+            //AssignmentModel.addElement(a);
         }
         AgComboBox.setModel(AssignmentModel);
         
@@ -63,7 +64,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
 
         int count = 7;
 
-        List<Assignment> assignments = data.loadData(searchField.getText());
+        List<StudentAssignment> assignments = data.loadData(searchField.getText());
 
         JPanel columns = new JPanel(new GridLayout(0, 7));
         columns.setPreferredSize(new Dimension(700, 20));
@@ -98,7 +99,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
         
         contents.add(columns);
 
-        for (Assignment a : assignments) {
+        for (StudentAssignment a : assignments) {
             JPanel row = new JPanel(new GridLayout(0, 7));
             row.setPreferredSize(new Dimension(700,10));
 
@@ -134,7 +135,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
             btn.setName(a.getAssignmentID());
             btn.addActionListener((java.awt.event.ActionEvent evt) -> {
                 try {
-                    URL resource = Assignment.class.getResource(a.getFilepath());
+                    URL resource = StudentAssignment.class.getResource(a.getFilepath());
                     File pdfFile = new File(resource.toURI());
                     if (pdfFile.exists()) {
                         if (Desktop.isDesktopSupported()) {
@@ -148,7 +149,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (URISyntaxException ex) {
-                    Logger.getLogger(Assignment.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(StudentAssignment.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
             btnpanel.add(btn);

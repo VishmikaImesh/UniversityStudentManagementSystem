@@ -3,38 +3,123 @@ package admin.gui;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.CardLayout;
-import javax.swing.JPanel;
-import lecturer.panel.AssignmentPanel;
-import lecturer.panel.Dashboard;
+import admin.panel.BatchesPanel;
+import com.formdev.flatlaf.FlatClientProperties;
+
+import admin.panel.AssignmentPanel;
+import admin.panel.AttendancePanel;
+import admin.panel.Dashboard;
+import admin.panel.ExamsPanel;
+import admin.panel.LecturersPanel;
+import admin.panel.PaymentsPanel;
+import admin.panel.ProfilePanel;
+import admin.panel.StudentsPanel;
+import admin.panel.TimeTablePanel;
+import admin.panel.UnitsPanel;
+
+
+import javax.swing.JButton;
 
 public class Home extends javax.swing.JFrame {
 
-    private Dashboard dashboard;
     private CardLayout layout;
-    private AssignmentPanel assignment;
     
-    public Home() {
+    private Dashboard dashboard;
+    private AssignmentPanel assignment;
+    private BatchesPanel batches;
+    private AttendancePanel attendance;
+    private ExamsPanel exams;
+    private LecturersPanel lecturers;
+    private PaymentsPanel payments;
+    private ProfilePanel profile;
+    private StudentsPanel students;
+    private TimeTablePanel timetable;
+    private UnitsPanel units;
+
+    private static Home home;
+
+    private Home() {
         initComponents();
         init();
         loadPanels();
     }
 
+    public static synchronized Home getHome() {
+        if (home == null) {
+            home = new Home();
+        }
+
+        return home;
+    }
+
     private void init() {
         profilePic.setIcon(new FlatSVGIcon("student/icon/noprofile.svg", 50, 50));
+
+        dashboardbtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/dashboard.svg")));
+        //dashboardbtn.putClientProperty(FlatClientProperties.STYLE, "arc:40; ");
+
+        studentsBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/student.svg")));
+        lecturersBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/lecturers.svg")));
+        batchesBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/batches.svg")));
+        timeTablebtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/timetable.svg")));
+        unitsBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/subjects.svg")));
+        attendanceBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/attendance.svg")));
+        assignmentsBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/assignments.svg")));
+        paymentsBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/payments.svg")));
+        examsBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/exams2.svg")));
+        //profileBtn.setIcon(new FlatSVGIcon(getClass().getResource("/icons/user.svg")));
     }
 
     private void loadPanels() {
 
         layout = new CardLayout();
         mainPanel.setLayout(layout);
-        
+
         dashboard = new Dashboard();
-        assignment=new AssignmentPanel();
-                
-        mainPanel.add(assignment,"Assignment");
-        mainPanel.add(dashboard, "Dashboard");
+        assignment = new AssignmentPanel();
+        attendance=new AttendancePanel();
+        batches=new BatchesPanel();
+        exams=new ExamsPanel();
+        lecturers=new LecturersPanel();
+        payments=new PaymentsPanel();
+        profile=new ProfilePanel();
+        students=new StudentsPanel();
+        timetable=new TimeTablePanel();
+        units=new UnitsPanel();
         
-        layout.show(mainPanel, "Dashboard");
+        mainPanel.add(assignment, "Assignment");
+        mainPanel.add(dashboard, "Dashboard");
+        mainPanel.add(attendance,"Attendance");
+        mainPanel.add(batches,"Batches");
+        mainPanel.add(exams,"Exams");
+        mainPanel.add(lecturers,"Lecturers");
+        mainPanel.add(payments,"Payments");
+        mainPanel.add(profile,"Profile");
+        mainPanel.add(students,"Students");
+        mainPanel.add(timetable,"TimeTable");
+        mainPanel.add(units,"Units");    
+
+    }
+    
+    public void setPanels(String panel){       
+        layout.show(mainPanel, panel);
+    }
+    
+    
+    public JButton getAssignmentsBtn() {
+        return assignmentsBtn;
+    }
+
+    public JButton getExamsBtn() {
+        return examsBtn;
+    }
+
+    public JButton getStudentsBtn() {
+        return studentsBtn;
+    }
+
+    public JButton getUnitsBtn() {
+        return unitsBtn;
     }
 
     @SuppressWarnings("unchecked")
@@ -50,14 +135,16 @@ public class Home extends javax.swing.JFrame {
         timeTablebtn = new javax.swing.JButton();
         unitsBtn = new javax.swing.JButton();
         attendanceBtn = new javax.swing.JButton();
-        AssignmentsBtn = new javax.swing.JButton();
-        PaymentsBtn = new javax.swing.JButton();
+        assignmentsBtn = new javax.swing.JButton();
+        paymentsBtn = new javax.swing.JButton();
         examsBtn = new javax.swing.JButton();
-        ProfileBtn = new javax.swing.JButton();
+        profileBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         profilePic = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Managment System");
@@ -73,13 +160,14 @@ public class Home extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 33, 71));
         jPanel2.setForeground(new java.awt.Color(0, 50, 232));
-        jPanel2.setLayout(new java.awt.GridLayout(11, 1));
+        jPanel2.setLayout(new java.awt.GridLayout(11, 1, 5, 0));
 
         dashboardbtn.setBackground(new java.awt.Color(0, 33, 71));
         dashboardbtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         dashboardbtn.setForeground(new java.awt.Color(255, 255, 255));
-        dashboardbtn.setText("Dashboard");
+        dashboardbtn.setText(" Dashboard");
         dashboardbtn.setBorder(null);
+        dashboardbtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         dashboardbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dashboardbtnActionPerformed(evt);
@@ -90,8 +178,9 @@ public class Home extends javax.swing.JFrame {
         studentsBtn.setBackground(new java.awt.Color(0, 33, 71));
         studentsBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         studentsBtn.setForeground(new java.awt.Color(255, 255, 255));
-        studentsBtn.setText("Studnets");
+        studentsBtn.setText(" Students");
         studentsBtn.setBorder(null);
+        studentsBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         studentsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 studentsBtnActionPerformed(evt);
@@ -102,8 +191,9 @@ public class Home extends javax.swing.JFrame {
         lecturersBtn.setBackground(new java.awt.Color(0, 33, 71));
         lecturersBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         lecturersBtn.setForeground(new java.awt.Color(255, 255, 255));
-        lecturersBtn.setText("lecturers");
+        lecturersBtn.setText(" lecturers");
         lecturersBtn.setBorder(null);
+        lecturersBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lecturersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lecturersBtnActionPerformed(evt);
@@ -114,8 +204,9 @@ public class Home extends javax.swing.JFrame {
         batchesBtn.setBackground(new java.awt.Color(0, 33, 71));
         batchesBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         batchesBtn.setForeground(new java.awt.Color(255, 255, 255));
-        batchesBtn.setText("Batches");
+        batchesBtn.setText(" Batches");
         batchesBtn.setBorder(null);
+        batchesBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         batchesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 batchesBtnActionPerformed(evt);
@@ -126,8 +217,9 @@ public class Home extends javax.swing.JFrame {
         timeTablebtn.setBackground(new java.awt.Color(0, 33, 71));
         timeTablebtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         timeTablebtn.setForeground(new java.awt.Color(255, 255, 255));
-        timeTablebtn.setText("Time Table");
+        timeTablebtn.setText(" Time Table");
         timeTablebtn.setBorder(null);
+        timeTablebtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         timeTablebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 timeTablebtnActionPerformed(evt);
@@ -138,8 +230,9 @@ public class Home extends javax.swing.JFrame {
         unitsBtn.setBackground(new java.awt.Color(0, 33, 71));
         unitsBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         unitsBtn.setForeground(new java.awt.Color(255, 255, 255));
-        unitsBtn.setText("Units");
+        unitsBtn.setText(" Units");
         unitsBtn.setBorder(null);
+        unitsBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         unitsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unitsBtnActionPerformed(evt);
@@ -150,8 +243,9 @@ public class Home extends javax.swing.JFrame {
         attendanceBtn.setBackground(new java.awt.Color(0, 33, 71));
         attendanceBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         attendanceBtn.setForeground(new java.awt.Color(255, 255, 255));
-        attendanceBtn.setText("Attendance");
+        attendanceBtn.setText(" Attendance");
         attendanceBtn.setBorder(null);
+        attendanceBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         attendanceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 attendanceBtnActionPerformed(evt);
@@ -159,35 +253,38 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel2.add(attendanceBtn);
 
-        AssignmentsBtn.setBackground(new java.awt.Color(0, 33, 71));
-        AssignmentsBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        AssignmentsBtn.setForeground(new java.awt.Color(255, 255, 255));
-        AssignmentsBtn.setText("Assignments");
-        AssignmentsBtn.setBorder(null);
-        AssignmentsBtn.addActionListener(new java.awt.event.ActionListener() {
+        assignmentsBtn.setBackground(new java.awt.Color(0, 33, 71));
+        assignmentsBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        assignmentsBtn.setForeground(new java.awt.Color(255, 255, 255));
+        assignmentsBtn.setText(" Assignments");
+        assignmentsBtn.setBorder(null);
+        assignmentsBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        assignmentsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AssignmentsBtnActionPerformed(evt);
+                assignmentsBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(AssignmentsBtn);
+        jPanel2.add(assignmentsBtn);
 
-        PaymentsBtn.setBackground(new java.awt.Color(0, 33, 71));
-        PaymentsBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        PaymentsBtn.setForeground(new java.awt.Color(255, 255, 255));
-        PaymentsBtn.setText("Payments");
-        PaymentsBtn.setBorder(null);
-        PaymentsBtn.addActionListener(new java.awt.event.ActionListener() {
+        paymentsBtn.setBackground(new java.awt.Color(0, 33, 71));
+        paymentsBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        paymentsBtn.setForeground(new java.awt.Color(255, 255, 255));
+        paymentsBtn.setText(" Payments");
+        paymentsBtn.setBorder(null);
+        paymentsBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        paymentsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PaymentsBtnActionPerformed(evt);
+                paymentsBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(PaymentsBtn);
+        jPanel2.add(paymentsBtn);
 
         examsBtn.setBackground(new java.awt.Color(0, 33, 71));
         examsBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         examsBtn.setForeground(new java.awt.Color(255, 255, 255));
-        examsBtn.setText("Exams");
+        examsBtn.setText(" Exams");
         examsBtn.setBorder(null);
+        examsBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         examsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 examsBtnActionPerformed(evt);
@@ -195,65 +292,90 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel2.add(examsBtn);
 
-        ProfileBtn.setBackground(new java.awt.Color(0, 33, 71));
-        ProfileBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        ProfileBtn.setForeground(new java.awt.Color(255, 255, 255));
-        ProfileBtn.setText("Profile");
-        ProfileBtn.setBorder(null);
-        ProfileBtn.addActionListener(new java.awt.event.ActionListener() {
+        profileBtn.setBackground(new java.awt.Color(0, 33, 71));
+        profileBtn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        profileBtn.setForeground(new java.awt.Color(255, 255, 255));
+        profileBtn.setText(" Profile");
+        profileBtn.setBorder(null);
+        profileBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        profileBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProfileBtnActionPerformed(evt);
+                profileBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(ProfileBtn);
+        jPanel2.add(profileBtn);
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 153));
         jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
 
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Admin Name");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Admin Admin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(profilePic, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(profilePic, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(profilePic, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(profilePic, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
+            .addGap(0, 916, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 655, Short.MAX_VALUE)
+        );
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Institute of SE");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -261,16 +383,26 @@ public class Home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -282,48 +414,48 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void attendanceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendanceBtnActionPerformed
-
+        setPanels("Attendance");
     }//GEN-LAST:event_attendanceBtnActionPerformed
 
     private void timeTablebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeTablebtnActionPerformed
-
+        setPanels("TimeTable");
     }//GEN-LAST:event_timeTablebtnActionPerformed
 
     private void unitsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitsBtnActionPerformed
-
+        setPanels("Units");
     }//GEN-LAST:event_unitsBtnActionPerformed
 
-    private void dashboardbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardbtnActionPerformed
+    private void assignmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignmentsBtnActionPerformed
+        setPanels("Assignment");
+    }//GEN-LAST:event_assignmentsBtnActionPerformed
 
-    }//GEN-LAST:event_dashboardbtnActionPerformed
+    private void paymentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentsBtnActionPerformed
+       setPanels("Payments");
+    }//GEN-LAST:event_paymentsBtnActionPerformed
 
-    private void AssignmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignmentsBtnActionPerformed
-        layout.show(mainPanel,"Assignment");
-    }//GEN-LAST:event_AssignmentsBtnActionPerformed
-
-    private void PaymentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentsBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PaymentsBtnActionPerformed
-
-    private void ProfileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ProfileBtnActionPerformed
+    private void profileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileBtnActionPerformed
+       setPanels("Profile");
+    }//GEN-LAST:event_profileBtnActionPerformed
 
     private void studentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsBtnActionPerformed
-        // TODO add your handling code here:
+        setPanels("Students");
     }//GEN-LAST:event_studentsBtnActionPerformed
 
     private void lecturersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecturersBtnActionPerformed
-        // TODO add your handling code here:
+        setPanels("Lecturers");
     }//GEN-LAST:event_lecturersBtnActionPerformed
 
     private void batchesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batchesBtnActionPerformed
-        // TODO add your handling code here:
+       setPanels("Batches");
     }//GEN-LAST:event_batchesBtnActionPerformed
 
     private void examsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examsBtnActionPerformed
-        // TODO add your handling code here:
+        setPanels("Exams");
     }//GEN-LAST:event_examsBtnActionPerformed
+
+    private void dashboardbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardbtnActionPerformed
+         setPanels("Dashboard");
+    }//GEN-LAST:event_dashboardbtnActionPerformed
 
     public static void main(String args[]) {
         FlatLightLaf.setup();
@@ -331,28 +463,31 @@ public class Home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                Home.getHome().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AssignmentsBtn;
-    private javax.swing.JButton PaymentsBtn;
-    private javax.swing.JButton ProfileBtn;
+    private javax.swing.JButton assignmentsBtn;
     private javax.swing.JButton attendanceBtn;
     private javax.swing.JButton batchesBtn;
     private javax.swing.JButton dashboardbtn;
     private javax.swing.JButton examsBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton lecturersBtn;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JButton paymentsBtn;
+    private javax.swing.JButton profileBtn;
     private javax.swing.JLabel profilePic;
     private javax.swing.JButton studentsBtn;
     private javax.swing.JButton timeTablebtn;
     private javax.swing.JButton unitsBtn;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -3,9 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="singleton pattern">
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/lecture/model/Assignment.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/lecturer/panel/Assignment.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/lecture/model/AssignmentData.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/ProfilePanel.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/gui/Home.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/AssignmentPanel.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/TimeTablePanel.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/Dashboard.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/UnitsPanel.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/LecturersPanel.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/PaymentsPanel.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/StudentsPanel.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/ExamsPanel.java</file>
         </group>
     </open-files>
 </project-private>

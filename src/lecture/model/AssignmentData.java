@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lecture.model;
 
 import java.sql.Connection;
@@ -12,10 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author USER
- */
+
 public class AssignmentData {
 
     private String q = ("""
@@ -25,8 +19,8 @@ public class AssignmentData {
                                                               JOIN `subject` ON `assigment`.`subject_subject_id`=`subject`.`subject_id` 
                                                               JOIN `batch` ON `student_info`.`batch_id`=`batch`.`batch_id` """);
 
-    public List<Assignment> loadData(String txt) {
-        List<Assignment> assignments = new ArrayList<>();
+    public List<StudentAssignment> loadData(String txt) {
+        List<StudentAssignment> assignments = new ArrayList<>();
 
         String sq = q;
 
@@ -48,8 +42,8 @@ public class AssignmentData {
             Statement s = c.createStatement();
             ResultSet rs = s.executeQuery(sq);
             while (rs.next()) {
-                Assignment a = new Assignment(rs.getString("student_nic"), rs.getString("first_name"), rs.getString("batch_name"), rs.getString("subject_name"), rs.getString("assignment_id"), rs.getString("file_path"));
-                assignments.add(a);
+                StudentAssignment data=new StudentAssignment(rs.getString("student_nic"),rs.getString("first_name"),rs.getString("batch_id"),rs.getString("subject_name"),rs.getString("subject_id"),rs.getString("marks"),rs.getString("file_pat"));
+                assignments.add(data);
             }
 
             rs.close();
@@ -107,18 +101,20 @@ public class AssignmentData {
         return subject;
     }
     
-    public List<String> loadAssignment(){
+    public List<Assignment> loadAssignment(){
         
-        String aq="SELECT * FROM `assigment`";
-        List<String> subject=new ArrayList<>();
+        String aq="SELECT * FROM `assignment_details` " ;
+        List<Assignment> assignments=new ArrayList<>();
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
             Statement s = c.createStatement();
             ResultSet rs = s.executeQuery(aq);
+            
             while (rs.next()) {
-                subject.add(rs.getString("assignment_name"));
+                Assignment assignment=new Assignment(rs.getString("assignment_id"),rs.getString("assignment_name"),rs.getString("batch_name"),rs.getString("start_time"),rs.getString("due_time"),rs.getString("subject_name"));
+                assignments.add(assignment);
             }
 
             rs.close();
@@ -128,6 +124,32 @@ public class AssignmentData {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        return subject;
+        return assignments;
+    }
+    
+     public List<StudentAssignment> loadStudentAssignment(String batchId,String assignmentId){
+        
+        String aq="SELECT * FROM `studentassignment_details` WHERE `batch_Id`=2  ";
+        List<StudentAssignment> assignments=new ArrayList<>();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
+            Statement s = c.createStatement();
+            ResultSet rs = s.executeQuery(aq);
+            
+            while (rs.next()) {
+               StudentAssignment data=new StudentAssignment(rs.getString("student_nic"),rs.getString("first_name"),rs.getString("batch_id"),rs.getString("subject_name"),rs.getString("subject_id"),rs.getString("marks"),rs.getString("file_path"));
+               assignments.add(data);
+            }
+
+            rs.close();
+            s.close();
+            c.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return assignments;
     }
 }

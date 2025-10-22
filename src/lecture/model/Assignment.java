@@ -4,50 +4,46 @@
  */
 package lecture.model;
 
-/**
- *
- * @author USER
- */
 public class Assignment {
-    private final String nic;
-    private final String name;
-    private final String batch;
-    private final String subject;
-    private final String AssignmentID;
-    private final String filepath;
-
-    public Assignment(String nic, String name, String batch, String subject, String AssignmentID, String filepath) {
-        this.nic = nic;
-        this.name = name;
-        this.batch = batch;
-        this.subject = subject;
-        this.AssignmentID = AssignmentID;
-        this.filepath = filepath;
-    }
     
-    public String getNic() {
-        return nic;
+    private final String assignmentID;
+    private final String assignmentName;
+    private final String batch;
+    private final String startDate;
+    private final String dueDate;
+    private final String subject;
+
+    public Assignment(String assignmentID, String assignmentName, String batch, String startDate, String dueDate,String subject) {
+        this.assignmentID = assignmentID;
+        this.assignmentName = assignmentName;
+        this.batch = batch;
+        this.startDate = startDate;
+        this.dueDate = dueDate;
+        this.subject=subject;
     }
 
-    public String getName() {
-        return name;
+    public String getAssignmentID() {
+        return assignmentID;
+    }
+
+    public String getAssignmentName() {
+        return assignmentName;
     }
 
     public String getBatch() {
         return batch;
     }
 
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
     public String getSubject() {
         return subject;
     }
-
-    public String getAssignmentID() {
-        return AssignmentID;
-    }
-
-    public String getFilepath() {
-        return filepath;
-    }
-    
     
 }
