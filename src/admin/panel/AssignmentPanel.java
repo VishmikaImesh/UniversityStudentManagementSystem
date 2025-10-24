@@ -41,7 +41,6 @@ public class AssignmentPanel extends javax.swing.JPanel {
         searchField.putClientProperty(FlatClientProperties.STYLE, "arc:10; borderColor:#CCCCCC;");
         BatchComboBox.putClientProperty(FlatClientProperties.STYLE, "arc:10 ");
         subjectComboBox.putClientProperty(FlatClientProperties.STYLE, "arc:10 ");
-        report.putClientProperty(FlatClientProperties.STYLE, "arc:10");
         searchPanel.putClientProperty(FlatClientProperties.STYLE, "arc:20");
         assignmentTablePanel.putClientProperty(FlatClientProperties.STYLE, "arc:20;");
 
@@ -98,10 +97,11 @@ public class AssignmentPanel extends javax.swing.JPanel {
         searchField = new javax.swing.JTextField();
         BatchComboBox = new javax.swing.JComboBox<>();
         subjectComboBox = new javax.swing.JComboBox<>();
-        report = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        BatchComboBox1 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         assignmentTablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AssignmetnTable = new javax.swing.JTable();
@@ -120,7 +120,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Active Assignments");
+        jLabel2.setText("Assignments");
 
         searchPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -142,15 +142,12 @@ public class AssignmentPanel extends javax.swing.JPanel {
         BatchComboBox.setBackground(new java.awt.Color(250, 250, 250));
         BatchComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         BatchComboBox.setForeground(new java.awt.Color(102, 102, 102));
-        BatchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filter By: Batch" }));
+        BatchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filter By: Status" }));
 
         subjectComboBox.setBackground(new java.awt.Color(250, 250, 250));
         subjectComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         subjectComboBox.setForeground(new java.awt.Color(102, 102, 102));
         subjectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filter By: Subject" }));
-
-        report.setText("Report");
-        report.setBorder(null);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
@@ -158,37 +155,45 @@ public class AssignmentPanel extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel5.setText("Batch");
+        jLabel5.setText("Status");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
         jLabel6.setText("Subject");
 
+        BatchComboBox1.setBackground(new java.awt.Color(250, 250, 250));
+        BatchComboBox1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        BatchComboBox1.setForeground(new java.awt.Color(102, 102, 102));
+        BatchComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filter By: Batch" }));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel7.setText("Batch");
+
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BatchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(subjectComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(searchPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(report, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(searchField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BatchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BatchComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,15 +202,15 @@ public class AssignmentPanel extends javax.swing.JPanel {
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BatchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(report, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                    .addComponent(BatchComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         assignmentTablePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -217,7 +222,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Assignment ID", "Assignment Name", "Due Date", "Batch", "Subject"
+                "Assignment ID", "Assignment Name", "Due Date", "Status", "Batch", "Subject"
             }
         ));
         AssignmetnTable.setFocusable(false);
@@ -234,6 +239,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
             AssignmetnTable.getColumnModel().getColumn(2).setPreferredWidth(80);
             AssignmetnTable.getColumnModel().getColumn(3).setPreferredWidth(30);
             AssignmetnTable.getColumnModel().getColumn(4).setPreferredWidth(30);
+            AssignmetnTable.getColumnModel().getColumn(5).setPreferredWidth(30);
         }
 
         javax.swing.GroupLayout assignmentTablePanelLayout = new javax.swing.GroupLayout(assignmentTablePanel);
@@ -285,11 +291,11 @@ public class AssignmentPanel extends javax.swing.JPanel {
                         .addComponent(newAssignmentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
                 .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(assignmentTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -329,15 +335,16 @@ public class AssignmentPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AssignmetnTable;
     private javax.swing.JComboBox<String> BatchComboBox;
+    private javax.swing.JComboBox<String> BatchComboBox1;
     private javax.swing.JPanel assignmentTablePanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton newAssignmentBtn;
-    private javax.swing.JButton report;
     private javax.swing.JTextField searchField;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JComboBox<String> subjectComboBox;
