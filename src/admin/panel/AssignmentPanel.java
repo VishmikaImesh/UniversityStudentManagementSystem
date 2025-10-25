@@ -107,7 +107,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
         AssignmetnTable = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Assignment2");
+        jLabel1.setText("Assignment");
 
         newAssignmentBtn.setBackground(new java.awt.Color(0, 77, 255));
         newAssignmentBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
