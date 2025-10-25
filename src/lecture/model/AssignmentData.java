@@ -129,7 +129,7 @@ public class AssignmentData {
     
      public List<StudentAssignment> loadStudentAssignment(String batchId,String assignmentId){
         
-        String aq="SELECT * FROM `studentassignment_details` WHERE `batch_Id`=2  ";
+        String aq="SELECT * FROM `studentassignment_details` WHERE `batch_Id`="+batchId;
         List<StudentAssignment> assignments=new ArrayList<>();
         
         try {
