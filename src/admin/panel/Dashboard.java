@@ -58,6 +58,7 @@ public class Dashboard extends javax.swing.JPanel {
         noticeBoardPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(241, 241, 241));
 
@@ -288,6 +289,8 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(93, 93, 93));
 
+        jLabel4.setText("imesh 8.11");
+
         javax.swing.GroupLayout noticeBoardPanelLayout = new javax.swing.GroupLayout(noticeBoardPanel);
         noticeBoardPanel.setLayout(noticeBoardPanelLayout);
         noticeBoardPanelLayout.setHorizontalGroup(
@@ -295,6 +298,7 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(noticeBoardPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(noticeBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -306,7 +310,9 @@ public class Dashboard extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jLabel4)
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -367,6 +373,7 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

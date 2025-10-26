@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="singleton pattern">
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/dialog/ViewAssignments.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/gui/Home.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/AssignmentPanel.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/lecture/model/AssignmentData.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Group%20Project/UniversityStudentManagementSystem/src/admin/panel/Dashboard.java</file>
         </group>
     </open-files>
 </project-private>
