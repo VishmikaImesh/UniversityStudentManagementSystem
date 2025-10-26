@@ -454,12 +454,25 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+=======
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      </Group>
+>>>>>>> 1bbc3ca431ff435057d40e031d5f9c09bd3ebe53
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -472,9 +485,15 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="146" max="32767" attributes="0"/>
+=======
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="165" max="32767" attributes="0"/>
+>>>>>>> 1bbc3ca431ff435057d40e031d5f9c09bd3ebe53
               </Group>
           </Group>
         </DimensionLayout>
@@ -500,7 +519,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
+<<<<<<< HEAD
             <Property name="text" type="java.lang.String" value="imesh 8.11"/>
+=======
+            <Property name="text" type="java.lang.String" value="git imesh "/>
+>>>>>>> 1bbc3ca431ff435057d40e031d5f9c09bd3ebe53
           </Properties>
         </Component>
       </SubComponents>
