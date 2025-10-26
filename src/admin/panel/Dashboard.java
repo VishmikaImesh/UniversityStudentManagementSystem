@@ -289,11 +289,8 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(93, 93, 93));
 
-<<<<<<< HEAD
-        jLabel4.setText("imesh 8.11");
-=======
         jLabel4.setText("git imesh ");
->>>>>>> 1bbc3ca431ff435057d40e031d5f9c09bd3ebe53
+
 
         javax.swing.GroupLayout noticeBoardPanelLayout = new javax.swing.GroupLayout(noticeBoardPanel);
         noticeBoardPanel.setLayout(noticeBoardPanelLayout);
@@ -301,11 +298,7 @@ public class Dashboard extends javax.swing.JPanel {
             noticeBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(noticeBoardPanelLayout.createSequentialGroup()
                 .addGroup(noticeBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-=======
+
                     .addGroup(noticeBoardPanelLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(noticeBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +307,6 @@ public class Dashboard extends javax.swing.JPanel {
                     .addGroup(noticeBoardPanelLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(jLabel4)))
->>>>>>> 1bbc3ca431ff435057d40e031d5f9c09bd3ebe53
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         noticeBoardPanelLayout.setVerticalGroup(
@@ -324,15 +316,11 @@ public class Dashboard extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-<<<<<<< HEAD
-                .addGap(37, 37, 37)
-                .addComponent(jLabel4)
-                .addContainerGap(146, Short.MAX_VALUE))
-=======
+
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addContainerGap(165, Short.MAX_VALUE))
->>>>>>> 1bbc3ca431ff435057d40e031d5f9c09bd3ebe53
+
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
