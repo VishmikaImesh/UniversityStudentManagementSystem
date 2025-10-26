@@ -14,7 +14,7 @@ public class DBConnection {
 
     private static final String url = "jdbc:mysql://localhost:3306/university_db";
     private static final String username = "root";
-    private static final String password = "Imesh#146810";
+    private static final String password = "Imesh#14681";
     private static Connection conn;
 
     public static Connection getConnection() {

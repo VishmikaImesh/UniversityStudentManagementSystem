@@ -1,6 +1,6 @@
-
 package admin.model;
 
+import Connection.DBConnection;
 import lecture.model.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class AssignmentData {
 
@@ -33,117 +32,102 @@ public class AssignmentData {
         }
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
-            Statement s = c.createStatement();
-            ResultSet rs = s.executeQuery(sq);
+            ResultSet rs = DBConnection.executeQuery(sq);
             while (rs.next()) {
-                StudentAssignment data=new StudentAssignment(rs.getString("student_nic"),rs.getString("first_name"),rs.getString("batch_id"),rs.getString("subject_name"),rs.getString("subject_id"),rs.getString("marks"),rs.getString("file_pat"));
+                StudentAssignment data = new StudentAssignment(rs.getString("student_nic"), rs.getString("first_name"), rs.getString("batch_id"), rs.getString("subject_name"), rs.getString("subject_id"), rs.getString("marks"), rs.getString("file_pat"));
                 assignments.add(data);
             }
 
             rs.close();
-            s.close();
-            c.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return assignments;
     }
 
     public List<String> loadBatch() {
-        String bq="SELECT * FROM `batch`";
-        List<String> batch=new ArrayList<>();
-        
+        String bq = "SELECT * FROM `batch`";
+        List<String> batch = new ArrayList<>();
+
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
-            Statement s = c.createStatement();
-            ResultSet rs = s.executeQuery(bq);
+            ResultSet rs = DBConnection.executeQuery(bq);
             while (rs.next()) {
                 batch.add(rs.getString("batch_name"));
             }
 
             rs.close();
-            s.close();
-            c.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return  batch;
+        return batch;
     }
-    
-    public List<String> loadSubject(){
-        String sq="SELECT * FROM `subject`";
-        List<String> subject=new ArrayList<>();
+
+    public List<String> loadSubject() {
+        String sq = "SELECT * FROM `subject`";
+        List<String> subject = new ArrayList<>();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
-            Statement s = c.createStatement();
-            ResultSet rs = s.executeQuery(sq);
+            ResultSet rs = DBConnection.executeQuery(sq);
             while (rs.next()) {
                 subject.add(rs.getString("subject_name"));
             }
 
             rs.close();
-            s.close();
-            c.close();
-
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return subject;
     }
     
-    public List<Assignment> loadAssignment(){
+    String assignmentQuery = "SELECT * FROM `assignment_details`  ";
+
+    public List<Assignment> loadAssignment() {
         
-        String aq="SELECT * FROM `assignment_details` " ;
-        List<Assignment> assignments=new ArrayList<>();
-        
+
+        List<Assignment> assignments = new ArrayList<>();
+
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
-            Statement s = c.createStatement();
-            ResultSet rs = s.executeQuery(aq);
-            
+            ResultSet rs = DBConnection.executeQuery(assignmentQuery);
+
             while (rs.next()) {
-                Assignment assignment=new Assignment(rs.getString("assignment_id"),rs.getString("assignment_name"),rs.getString("batch_name"),rs.getString("start_time"),rs.getString("due_time"),rs.getString("subject_name"));
+                Assignment assignment = new Assignment(rs.getString("assignment_id"), rs.getString("assignment_name"), rs.getString("batch_id"), rs.getString("batch_name"), rs.getString("start_time"), rs.getString("due_time"), rs.getString("subject_name"));
                 assignments.add(assignment);
             }
 
             rs.close();
-            s.close();
-            c.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return assignments;
     }
-    
-     public List<StudentAssignment> loadStudentAssignment(String batchId,String assignmentId){
-        
-        String aq="SELECT * FROM `studentassignment_details` WHERE `batch_Id`=2  ";
-        List<StudentAssignment> assignments=new ArrayList<>();
-        
+
+    public List<StudentAssignment> loadStudentAssignment(String batchId, String assignmentId) {
+
+        String AssignmentSearchQuery=assignmentQuery;
+
+        if (batchId != null & assignmentId==null) {
+            AssignmentSearchQuery+="WHERE `batch_Id`="+batchId;
+        }else if(batchId == null & assignmentId!=null){
+               AssignmentSearchQuery+="WHERE `assignment_id`="+assignmentId;
+        }else{
+            AssignmentSearchQuery+="WHERE `assignment_id`="+assignmentId+" AND `batch_Id`="+batchId;
+        }
+
+        List<StudentAssignment> assignments = new ArrayList<>();
+
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/university_db", "root", "Imesh#14681");
-            Statement s = c.createStatement();
-            ResultSet rs = s.executeQuery(aq);
-            
+            ResultSet rs = DBConnection.executeQuery(AssignmentSearchQuery);
+
             while (rs.next()) {
-               StudentAssignment data=new StudentAssignment(rs.getString("student_nic"),rs.getString("first_name"),rs.getString("batch_id"),rs.getString("subject_name"),rs.getString("subject_id"),rs.getString("marks"),rs.getString("file_path"));
-               assignments.add(data);
+                StudentAssignment data = new StudentAssignment(rs.getString("student_nic"), rs.getString("first_name"), rs.getString("batch_id"), rs.getString("subject_name"), rs.getString("subject_id"), rs.getString("marks"), rs.getString("file_path"));
+                assignments.add(data);
             }
 
             rs.close();
-            s.close();
-            c.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return assignments;

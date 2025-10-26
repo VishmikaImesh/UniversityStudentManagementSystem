@@ -71,10 +71,10 @@ public class AssignmentPanel extends javax.swing.JPanel {
     }
 
     public final void loadSubjects() {
-        List<Assignment> subjects = Assignment.loadAssignment();;
+        List<String> subjects = Assignment.loadSubject();
         DefaultComboBoxModel<String> subejctItems = new DefaultComboBoxModel<>();
-        for (Assignment subject : subjects) {
-            subejctItems.addElement(subject.getSubject());
+        for (String subject : subjects) {
+            subejctItems.addElement(subject);
         }
         subjectComboBox.setModel(subejctItems);
     }
@@ -82,7 +82,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
     public final void loadTable() {
         List<Assignment> assignments = Assignment.loadAssignment();
         for (Assignment a : assignments) {
-            model.addRow(new Object[]{a.getAssignmentID(), a.getAssignmentName(), a.getDueDate(), a.getBatch(), a.getSubject()});
+            model.addRow(new Object[]{a.getAssignmentID(),a.getBatchID(), a.getAssignmentName(), a.getDueDate(), a.getBatch(), a.getSubject()});
         }
     }
 
@@ -223,7 +223,7 @@ public class AssignmentPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Assignment ID", "Assignment Name", "Due Date", "Status", "Batch", "Subject"
+                "Assignment ID", "Batch ID", "Assignment Name", "Due Date", "Batch", "Subject", "Status"
             }
         ));
         AssignmetnTable.setFocusable(false);
@@ -236,11 +236,16 @@ public class AssignmentPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(AssignmetnTable);
         if (AssignmetnTable.getColumnModel().getColumnCount() > 0) {
-            AssignmetnTable.getColumnModel().getColumn(0).setPreferredWidth(10);
-            AssignmetnTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-            AssignmetnTable.getColumnModel().getColumn(3).setPreferredWidth(30);
+            AssignmetnTable.getColumnModel().getColumn(0).setMinWidth(0);
+            AssignmetnTable.getColumnModel().getColumn(0).setPreferredWidth(0);
+            AssignmetnTable.getColumnModel().getColumn(0).setMaxWidth(0);
+            AssignmetnTable.getColumnModel().getColumn(1).setMinWidth(0);
+            AssignmetnTable.getColumnModel().getColumn(1).setPreferredWidth(0);
+            AssignmetnTable.getColumnModel().getColumn(1).setMaxWidth(0);
+            AssignmetnTable.getColumnModel().getColumn(3).setPreferredWidth(80);
             AssignmetnTable.getColumnModel().getColumn(4).setPreferredWidth(30);
             AssignmetnTable.getColumnModel().getColumn(5).setPreferredWidth(30);
+            AssignmetnTable.getColumnModel().getColumn(6).setPreferredWidth(30);
         }
 
         javax.swing.GroupLayout assignmentTablePanelLayout = new javax.swing.GroupLayout(assignmentTablePanel);
@@ -308,11 +313,14 @@ public class AssignmentPanel extends javax.swing.JPanel {
 
     private void AssignmetnTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignmetnTableMouseClicked
         String assignmentId = (String) AssignmetnTable.getValueAt(AssignmetnTable.getSelectedRow(), 0);
-        String batchId = (String) AssignmetnTable.getValueAt(AssignmetnTable.getSelectedRow(), 3);
+        String assignment= (String)AssignmetnTable.getValueAt(AssignmetnTable.getSelectedRow(),2);
+        String batchId = (String) AssignmetnTable.getValueAt(AssignmetnTable.getSelectedRow(), 1);
+        String batch=(String) AssignmetnTable.getValueAt(AssignmetnTable.getSelectedRow(),4);
+        
         Window parentWindow = SwingUtilities.getWindowAncestor(this);
 
         ViewAssignments dialog = new ViewAssignments((java.awt.Frame) parentWindow, true);
-        dialog.AssignmentDetails(assignmentId, batchId);
+        dialog.AssignmentDetails(assignmentId,assignment,batchId,batch);
         dialog.setLocationRelativeTo(parentWindow); // center on parent
         dialog.setVisible(true);
     }//GEN-LAST:event_AssignmetnTableMouseClicked

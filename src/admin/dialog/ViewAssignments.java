@@ -23,8 +23,7 @@ public final class ViewAssignments extends javax.swing.JDialog {
         initComponents();
         init();
         this.model=(DefaultTableModel)assignmentDetailsTable.getModel();
-        loadTable();
-        
+     
     }
     
     private void init() {
@@ -43,9 +42,12 @@ public final class ViewAssignments extends javax.swing.JDialog {
           
     }
     
-    public void AssignmentDetails(String assignmentId, String batch) {
+    public void AssignmentDetails(String assignmentId,String assignment, String batchId, String batch) {
         this.assignmentId = assignmentId;
-        this.batchId = batch;
+        this.batchId = batchId;
+        info.setText(batch+" "+assignment+" Assignment");
+        System.out.println(assignmentId+batch);
+        loadTable();
     }
     
     public void loadTable() {
@@ -62,7 +64,7 @@ public final class ViewAssignments extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        info = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         assignmentDetailsPanel = new javax.swing.JPanel();
         assignmentDetailsScrollPanel = new javax.swing.JScrollPane();
@@ -70,8 +72,8 @@ public final class ViewAssignments extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Name+Batch");
+        info.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        info.setText("Name+Batch");
 
         jLabel1.setText("Discription");
 
@@ -124,7 +126,7 @@ public final class ViewAssignments extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(info)
                     .addComponent(assignmentDetailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
@@ -133,7 +135,7 @@ public final class ViewAssignments extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(24, 24, 24)
@@ -189,7 +191,7 @@ public final class ViewAssignments extends javax.swing.JDialog {
     private javax.swing.JPanel assignmentDetailsPanel;
     private javax.swing.JScrollPane assignmentDetailsScrollPanel;
     private javax.swing.JTable assignmentDetailsTable;
+    private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

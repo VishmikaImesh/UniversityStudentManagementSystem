@@ -296,14 +296,7 @@ public class PaymentsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AssignmetnTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssignmetnTableMouseClicked
-        String assignmentId = (String) AssignmetnTable.getValueAt(AssignmetnTable.getSelectedRow(), 0);
-        String batchId = (String) AssignmetnTable.getValueAt(AssignmetnTable.getSelectedRow(), 3);
-        Window parentWindow = SwingUtilities.getWindowAncestor(this);
 
-        ViewAssignments dialog = new ViewAssignments((java.awt.Frame) parentWindow, true);
-        dialog.AssignmentDetails(assignmentId, batchId);
-        dialog.setLocationRelativeTo(parentWindow); // center on parent
-        dialog.setVisible(true);
     }//GEN-LAST:event_AssignmetnTableMouseClicked
 
     private void searchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMouseClicked
@@ -321,10 +314,7 @@ public class PaymentsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchFieldMouseExited
 
     private void newAssignmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAssignmentBtnActionPerformed
-       Window parentWindow= SwingUtilities.getWindowAncestor(this);
-       NewAssignment newAssignment=new NewAssignment((Frame)parentWindow,true);
-       newAssignment.setLocationRelativeTo(parentWindow);
-       newAssignment.setVisible(true);
+
        
     }//GEN-LAST:event_newAssignmentBtnActionPerformed
 
