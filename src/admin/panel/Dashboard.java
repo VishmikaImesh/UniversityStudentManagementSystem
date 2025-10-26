@@ -59,6 +59,7 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(241, 241, 241));
 
@@ -291,6 +292,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         jLabel4.setText("git imesh ");
 
+        jLabel5.setText("git pubudu");
 
         javax.swing.GroupLayout noticeBoardPanelLayout = new javax.swing.GroupLayout(noticeBoardPanel);
         noticeBoardPanel.setLayout(noticeBoardPanelLayout);
@@ -298,7 +300,6 @@ public class Dashboard extends javax.swing.JPanel {
             noticeBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(noticeBoardPanelLayout.createSequentialGroup()
                 .addGroup(noticeBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
                     .addGroup(noticeBoardPanelLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(noticeBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +307,9 @@ public class Dashboard extends javax.swing.JPanel {
                             .addComponent(jLabel2)))
                     .addGroup(noticeBoardPanelLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jLabel4)))
+                        .addGroup(noticeBoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         noticeBoardPanelLayout.setVerticalGroup(
@@ -316,11 +319,11 @@ public class Dashboard extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addContainerGap(165, Short.MAX_VALUE))
-
+                .addGap(33, 33, 33)
+                .addComponent(jLabel5)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -382,6 +385,7 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
