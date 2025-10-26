@@ -321,9 +321,9 @@ public class Dashboard extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

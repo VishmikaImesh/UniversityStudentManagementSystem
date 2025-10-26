@@ -13,12 +13,7 @@ import java.util.List;
 
 public class AssignmentData {
 
-    private String q = ("""
-                                          SELECT `student_info`.`student_nic`,`first_name`,`last_name`,`assigment`.`assignment_id`,`batch_name`,`subject`.`subject_name`,`student_has_assignment`.`file_path` FROM `student_has_assignment` JOIN `student_info`
-                                                              ON  `student_has_assignment`.`student_nic`=`student_info`.`student_nic`
-                                                              JOIN `assigment` ON `student_has_assignment`.`assignment_id`=`assigment`.`assignment_id`
-                                                              JOIN `subject` ON `assigment`.`subject_subject_id`=`subject`.`subject_id` 
-                                                              JOIN `batch` ON `student_info`.`batch_id`=`batch`.`batch_id` """);
+    private final String q = ("SELECT * FROM `studentassignment_details`");
 
     public List<StudentAssignment> loadData(String txt) {
         List<StudentAssignment> assignments = new ArrayList<>();
