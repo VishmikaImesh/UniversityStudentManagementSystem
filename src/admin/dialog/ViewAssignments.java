@@ -8,8 +8,8 @@ import java.util.List;
 import javax.swing.JLabel;
 import static javax.swing.SwingConstants.LEFT;
 import javax.swing.table.DefaultTableModel;
-import lecture.model.AssignmentData;
-import lecture.model.StudentAssignment;
+import admin.model.AssignmentData;
+import admin.model.StudentAssignment;
 
 public final class ViewAssignments extends javax.swing.JDialog {
     
@@ -46,7 +46,6 @@ public final class ViewAssignments extends javax.swing.JDialog {
         this.assignmentId = assignmentId;
         this.batchId = batchId;
         info.setText(batch+" "+assignment+" Assignment");
-        System.out.println(assignmentId+batch);
         loadTable();
     }
     
@@ -54,10 +53,8 @@ public final class ViewAssignments extends javax.swing.JDialog {
         List<StudentAssignment> data = assignmentData.loadStudentAssignment(batchId, assignmentId);
         for (StudentAssignment s : data) {
             model.addRow(new Object[]{s.getNic(),s.getName(),s.getBatch()});
-            System.out.println(s.getName());
         }
-        
-        
+               
     }
     
     @SuppressWarnings("unchecked")

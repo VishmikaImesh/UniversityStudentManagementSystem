@@ -1,12 +1,9 @@
 package admin.model;
 
 import Connection.DBConnection;
-import lecture.model.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import admin.model.StudentAssignment;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,10 +77,10 @@ public class AssignmentData {
         return subject;
     }
     
-    String assignmentQuery = "SELECT * FROM `assignment_details`  ";
+    
 
     public List<Assignment> loadAssignment() {
-        
+        String assignmentQuery = "SELECT * FROM `assignment_details`  ";
 
         List<Assignment> assignments = new ArrayList<>();
 
@@ -105,22 +102,23 @@ public class AssignmentData {
 
     public List<StudentAssignment> loadStudentAssignment(String batchId, String assignmentId) {
 
-        String AssignmentSearchQuery=assignmentQuery;
+        String studentAssignmentQuery= "SELECT * FROM `studentassignment_details`  ";
 
         if (batchId != null & assignmentId==null) {
-            AssignmentSearchQuery+="WHERE `batch_Id`="+batchId;
+            studentAssignmentQuery+="WHERE `batch_Id`="+batchId;
         }else if(batchId == null & assignmentId!=null){
-               AssignmentSearchQuery+="WHERE `assignment_id`="+assignmentId;
+               studentAssignmentQuery+="WHERE `assignment_id`="+assignmentId;
         }else{
-            AssignmentSearchQuery+="WHERE `assignment_id`="+assignmentId+" AND `batch_Id`="+batchId;
+            studentAssignmentQuery+="WHERE `assignment_id`="+assignmentId+" AND `batch_Id`="+batchId;
         }
 
         List<StudentAssignment> assignments = new ArrayList<>();
 
         try {
-            ResultSet rs = DBConnection.executeQuery(AssignmentSearchQuery);
+            ResultSet rs = DBConnection.executeQuery(studentAssignmentQuery);
 
             while (rs.next()) {
+                System.out.println(rs.getString("first_name"));
                 StudentAssignment data = new StudentAssignment(rs.getString("student_nic"), rs.getString("first_name"), rs.getString("batch_id"), rs.getString("subject_name"), rs.getString("subject_id"), rs.getString("marks"), rs.getString("file_path"));
                 assignments.add(data);
             }
